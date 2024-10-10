@@ -1,15 +1,17 @@
-﻿using ECommerce.WebAPI.Models;
+﻿using ECommerce.WebAPI.Dtos.Products.Requests;
+using ECommerce.WebAPI.Dtos.Products.Responses;
+using ECommerce.WebAPI.Models;
 
 namespace ECommerce.WebAPI.Service.Abstract;
 
 public interface IProductService
 {
     
-    List<Product> GetAll();
+    List<ProductResponseDto> GetAll();
 
-    Product? GetById(int id);
+    ProductResponseDto? GetById(int id);
 
-    Product Add(Product product);
+    Product Add(CreateProductRequest product);
 
     Product Update(Product product);
 

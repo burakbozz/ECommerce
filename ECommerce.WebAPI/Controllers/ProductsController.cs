@@ -1,4 +1,6 @@
 ﻿using ECommerce.WebAPI.Context;
+using ECommerce.WebAPI.Dtos.Products.Requests;
+using ECommerce.WebAPI.Dtos.Products.Responses;
 using ECommerce.WebAPI.Models;
 using ECommerce.WebAPI.Repository.Abstracts;
 using ECommerce.WebAPI.Service.Abstract;
@@ -22,8 +24,21 @@ namespace ECommerce.WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            List<Product> products = _productService.GetAll();
+            List<ProductResponseDto> products = _productService.GetAll();
             return Ok(products);
+        }
+        [HttpPost("add")]
+        public IActionResult Add([FromBody]CreateProductRequest request ) 
+        { 
+            var created = _productService.Add(request);
+            return Ok(created);
+        }
+
+        [HttpGet("{id:int}")]
+        public IActionResult GetById([FromRoute] int id)
+        {
+            var product = _productService.GetById(id);
+            return Ok(product);
         }
 
         // @RestController

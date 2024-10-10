@@ -3,6 +3,7 @@ using ECommerce.WebAPI.Repository.Abstracts;
 using ECommerce.WebAPI.Repository.Concrete;
 using ECommerce.WebAPI.Service.Abstract;
 using ECommerce.WebAPI.Service.Concrete;
+using ECommerce.WebAPI.Service.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddScoped<IProductRepository,EfProductRepository>();
 builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<ICategoryRepository,EfCategoryRepository>();
 builder.Services.AddScoped<ICategoryService,CategoryService>();
+builder.Services.AddScoped<ProductMapper>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
